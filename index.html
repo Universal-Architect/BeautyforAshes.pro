@@ -280,7 +280,7 @@ footer{background:var(--dark);padding:40px;border-top:1px solid #111827;display:
     <div class="pricing-grid">
 
       <div class="price-card">
-        <div class="tier-name">Basic</div>
+        <div class="tier-name">Seeker</div>
         <div class="tier-price"><sup>$</sup>19</div>
         <p class="tier-desc">Digital planner access — downloadable PDF, all 297 pages, print at home or use digitally.</p>
         <ul class="tier-features">
@@ -290,14 +290,14 @@ footer{background:var(--dark);padding:40px;border-top:1px solid #111827;display:
           <li>All 4 Quarterly Maps</li>
           <li>365 daily planning pages</li>
         </ul>
-        <!-- PayPal Subscription Button — Basic $19 -->
-        <!-- Plan ID: P-89K58960WT101463BMA2QTGQ (update in PayPal dashboard to $19/mo if needed) -->
-        <div id="paypal-button-container-P-89K58960WT101463BMA2QTGQ" class="paypal-container"></div>
-        <div class="pay-note">Secure PayPal checkout · Instant access · Cancel anytime</div>
+        <!-- PayPal Subscription Button — Basic $19/month -->
+        <!-- Plan ID: P-0MD06572M1701024GNG5RFDA — Builder Executive Planner $19/mo -->
+        <div id="paypal-button-container-P-0MD06572M1701024GNG5RFDA" class="paypal-container"></div>
+        <div class="pay-note">Secure PayPal checkout · $19/month subscription · Cancel anytime</div>
       </div>
 
       <div class="price-card featured">
-        <div class="tier-name">Pro</div>
+        <div class="tier-name">Builder</div>
         <div class="tier-price"><sup>$</sup>27</div>
         <p class="tier-desc">Full digital planner plus printable cover sheets, section dividers, and implementation guide.</p>
         <ul class="tier-features">
@@ -307,10 +307,10 @@ footer{background:var(--dark);padding:40px;border-top:1px solid #111827;display:
           <li>Kingdom KPI reference sheet</li>
           <li>Priority email support</li>
         </ul>
-        <!-- PayPal Subscription Button — Pro $27 -->
-        <!-- Plan ID: P-8D325842DA922762MMA2QT6Q (update in PayPal dashboard to $27/mo if needed) -->
-        <div id="paypal-button-container-P-8D325842DA922762MMA2QT6Q" class="paypal-container"></div>
-        <div class="pay-note">Secure PayPal checkout · Instant access · Cancel anytime</div>
+        <!-- PayPal Subscription Button — Pro $27/month -->
+        <!-- Plan ID: P-2L25403941430350KNIU2PBA — Builder Web App Planner $27/mo -->
+        <div id="paypal-button-container-P-2L25403941430350KNIU2PBA" class="paypal-container"></div>
+        <div class="pay-note">Secure PayPal checkout · $27/month subscription · Cancel anytime</div>
       </div>
 
       <div class="price-card">
@@ -437,7 +437,7 @@ function toggleFaq(el){el.classList.toggle('open')}
   To update plan IDs: go to paypal.com → Products & Plans → copy Plan ID → paste below.
 ============================================== -->
 
-<!-- BASIC — $19/mo — Plan ID: P-89K58960WT101463BMA2QTGQ -->
+<!-- BASIC — $19/month — Plan ID: P-0MD06572M1701024GNG5RFDA — Builder Executive Planner -->
 <script>
   paypal.Buttons({
     style: {
@@ -448,7 +448,7 @@ function toggleFaq(el){el.classList.toggle('open')}
     },
     createSubscription: function(data, actions) {
       return actions.subscription.create({
-        'plan_id': 'P-89K58960WT101463BMA2QTGQ'
+        'plan_id': 'P-0MD06572M1701024GNG5RFDA'
       });
     },
     onApprove: function(data, actions) {
@@ -457,10 +457,10 @@ function toggleFaq(el){el.classList.toggle('open')}
     onError: function(err) {
       console.error('PayPal Basic error:', err);
     }
-  }).render('#paypal-button-container-P-89K58960WT101463BMA2QTGQ');
+  }).render('#paypal-button-container-P-0MD06572M1701024GNG5RFDA');
 </script>
 
-<!-- PRO — $27/mo — Plan ID: P-8D325842DA922762MMA2QT6Q -->
+<!-- PRO — $27/month — Plan ID: P-2L25403941430350KNIU2PBA — Builder Web App Planner -->
 <script>
   paypal.Buttons({
     style: {
@@ -471,7 +471,7 @@ function toggleFaq(el){el.classList.toggle('open')}
     },
     createSubscription: function(data, actions) {
       return actions.subscription.create({
-        'plan_id': 'P-8D325842DA922762MMA2QT6Q'
+        'plan_id': 'P-2L25403941430350KNIU2PBA'
       });
     },
     onApprove: function(data, actions) {
@@ -480,7 +480,7 @@ function toggleFaq(el){el.classList.toggle('open')}
     onError: function(err) {
       console.error('PayPal Pro error:', err);
     }
-  }).render('#paypal-button-container-P-8D325842DA922762MMA2QT6Q');
+  }).render('#paypal-button-container-P-2L25403941430350KNIU2PBA');
 </script>
 
 <!-- EXECUTIVE — $79/month — Plan ID: P-1LE82737S9930923KNIUIUCI -->
