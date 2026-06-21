@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kingdom Strategy Planner App</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#C9A84C;--dark:#0D1117;--panel:#111827;--line:#283244;--ink:#f8fafc;--muted:#a6adbb;--field:#0b1220}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--dark);color:var(--ink);line-height:1.5;min-height:100vh}
+header{background:linear-gradient(135deg,#0f2a2a,#1A1A2E);border-bottom:1px solid rgba(201,168,76,.35);padding:34px 20px;text-align:center}
+h1{font-family:Georgia,serif;font-size:clamp(30px,7vw,54px);line-height:1;margin-bottom:10px}
+.sub{color:#c8cbd4;max-width:700px;margin:0 auto}
+main{max-width:1050px;margin:0 auto;padding:26px 18px 48px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:22px}
+button,a.button{border:0;border-radius:6px;padding:12px 16px;background:var(--gold);color:#151515;font-weight:700;text-decoration:none;cursor:pointer}
+button.secondary,a.secondary{background:transparent;color:var(--gold);border:1px solid var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px}
+.wide{grid-column:1/-1}
+label{display:block;color:var(--gold);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+textarea,input{width:100%;background:var(--field);border:1px solid #2d3748;border-radius:6px;color:var(--ink);font:inherit;padding:12px;min-height:96px}
+input{min-height:44px}
+textarea:focus,input:focus{outline:2px solid rgba(201,168,76,.42);border-color:var(--gold)}
+.small textarea{min-height:74px}
+.note{margin-top:20px;color:var(--muted);font-size:13px;text-align:center}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+@media print{body{background:#fff;color:#111}header,.toolbar,.note{display:none}.card{break-inside:avoid;background:#fff;border-color:#bbb}label{color:#111}textarea,input{border-color:#aaa;color:#111;background:#fff}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Kingdom Strategy Planner App</h1>
+  <p class="sub">A simple offline daily planning workspace for vision, priorities, revenue actions, schedule, and end-of-day debrief.</p>
+</header>
+
+<main>
+  <div class="toolbar">
+    <button id="save">Save Today</button>
+    <button id="print" class="secondary">Print</button>
+    <button id="clear" class="secondary">Clear</button>
+    <a class="button secondary" href="Kingdom_Strategy_Trial_Packet.pdf">Open Trial PDF</a>
+  </div>
+
+  <form id="planner" class="grid">
+    <section class="card wide">
+      <label for="vision">Vision focus</label>
+      <textarea id="vision" name="vision" placeholder="What are you building, restoring, or monetizing in this season?"></textarea>
+    </section>
+    <section class="card small">
+      <label for="scripture">Scripture focus</label>
+      <textarea id="scripture" name="scripture" placeholder="What verse or principle is guiding today's execution?"></textarea>
+    </section>
+    <section class="card small">
+      <label for="priorities">Top 3 priorities</label>
+      <textarea id="priorities" name="priorities" placeholder="1.&#10;2.&#10;3."></textarea>
+    </section>
+    <section class="card small">
+      <label for="revenue">Revenue actions</label>
+      <textarea id="revenue" name="revenue" placeholder="Who needs an offer, follow-up, proposal, or invitation today?"></textarea>
+    </section>
+    <section class="card small">
+      <label for="people">People and delegation</label>
+      <textarea id="people" name="people" placeholder="Who needs direction, support, or a decision from you?"></textarea>
+    </section>
+    <section class="card small">
+      <label for="schedule">Schedule block</label>
+      <textarea id="schedule" name="schedule" placeholder="Morning:&#10;Midday:&#10;Afternoon:&#10;Evening:"></textarea>
+    </section>
+    <section class="card wide">
+      <label for="debrief">End-of-day debrief</label>
+      <textarea id="debrief" name="debrief" placeholder="What moved forward? What needs correction? What did you learn?"></textarea>
+    </section>
+  </form>
+
+  <p class="note">This app stores notes in your browser on this device. It does not send your data to Beauty for Ashes or any outside system.</p>
+</main>
+
+<script>
+const key = "kingdom-strategy-planner-today";
+const form = document.getElementById("planner");
+const fields = [...form.elements].filter((field) => field.name);
+function read(){try{return JSON.parse(localStorage.getItem(key)) || {}}catch{return {}}}
+function write(){const data={};fields.forEach((field)=>data[field.name]=field.value);localStorage.setItem(key,JSON.stringify(data))}
+function load(){const data=read();fields.forEach((field)=>field.value=data[field.name] || "")}
+document.getElementById("save").addEventListener("click",()=>{write();alert("Saved on this device.")});
+document.getElementById("print").addEventListener("click",()=>window.print());
+document.getElementById("clear").addEventListener("click",()=>{if(confirm("Clear today's planner fields?")){localStorage.removeItem(key);load()}});
+fields.forEach((field)=>field.addEventListener("input",write));
+load();
+</script>
+</body>
+</html>
