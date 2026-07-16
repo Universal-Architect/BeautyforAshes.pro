@@ -11,8 +11,9 @@
 body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--white);min-height:100vh;padding:0}
 
 /* HEADER */
-.topbar{background:var(--charcoal);border-bottom:2px solid var(--gold);padding:0 30px;display:flex;align-items:center;justify-content:space-between;height:56px}
-.tb-brand{font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:17px;font-weight:600;text-decoration:none}
+.topbar{background:var(--charcoal);border-bottom:2px solid var(--gold);padding:10px 30px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 18px;min-height:64px}
+.tb-brand{font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:17px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:10px}
+.tb-logo{width:44px;height:44px;object-fit:cover;border:1px solid rgba(201,168,76,.45);border-radius:50%;box-shadow:0 0 16px rgba(201,168,76,.16)}
 .tb-link{color:#888;font-size:12px;text-decoration:none;transition:color .2s}
 .tb-link:hover{color:var(--gold)}
 
@@ -80,7 +81,10 @@ footer a{color:var(--gold);text-decoration:none}
 <body>
 
 <div class="topbar">
-  <a href="index.html" class="tb-brand">Kingdom Strategy Planner</a>
+  <a href="index.html" class="tb-brand">
+    <img class="tb-logo" src="assets/beauty4ashes-eagle-logo.png" alt="Beauty 4 Ashes logo">
+    <span>Kingdom Strategy Planner</span>
+  </a>
   <a href="trial.html" class="tb-link">Free Trial</a>
 </div>
 
